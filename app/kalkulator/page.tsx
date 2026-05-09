@@ -66,37 +66,27 @@ export default function Page() {
           <motion.div variants={itemVars} className="space-y-8">
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-3">Target Ibadah (Biaya Saat Ini)</label>
-              <div className="grid grid-cols-2 gap-4">
-                <button 
-                  onClick={() => setEstimatedCost(45000000)} 
-                  className={`p-4 border rounded-xl text-left transition-all relative overflow-hidden ${estimatedCost === 45000000 ? 'border-[#064E3B] bg-emerald-50 ring-2 ring-[#064E3B]/20' : 'border-stone-200 hover:border-stone-300'}`}
+              
+              <div className="relative mb-6">
+                <select 
+                  value={estimatedCost} 
+                  onChange={(e) => setEstimatedCost(Number(e.target.value))}
+                  className="w-full appearance-none bg-white border border-stone-200 text-slate-900 rounded-xl px-4 py-4 pr-10 hover:border-[#064E3B] focus:outline-none focus:ring-2 focus:ring-[#064E3B]/20 font-semibold"
                 >
-                  <div className="font-semibold text-slate-900 relative z-10 flex items-center justify-between">
-                    Haji Reguler
-                    <Tooltip content="Biaya Penyelenggaraan Ibadah Haji rata-rata tahun ini">
-                      <Info className="w-4 h-4 text-stone-400" />
-                    </Tooltip>
-                  </div>
-                  <div className="text-sm text-slate-500 relative z-10">Rp 45 Juta</div>
-                  {estimatedCost === 45000000 && (
-                    <motion.div layoutId="highlight" className="absolute inset-0 bg-emerald-50 z-0" />
-                  )}
-                </button>
-                <button 
-                  onClick={() => setEstimatedCost(35000000)} 
-                  className={`p-4 border rounded-xl text-left transition-all relative overflow-hidden ${estimatedCost === 35000000 ? 'border-[#064E3B] bg-emerald-50 ring-2 ring-[#064E3B]/20' : 'border-stone-200 hover:border-stone-300'}`}
-                >
-                  <div className="font-semibold text-slate-900 relative z-10 flex items-center justify-between">
-                    Umroh
-                    <Tooltip content="Paket Umroh standar 9 Hari">
-                      <Info className="w-4 h-4 text-stone-400" />
-                    </Tooltip>
-                  </div>
-                  <div className="text-sm text-slate-500 relative z-10">Rp 35 Juta</div>
-                  {estimatedCost === 35000000 && (
-                    <motion.div layoutId="highlight" className="absolute inset-0 bg-emerald-50 z-0" />
-                  )}
-                </button>
+                  <optgroup label="Paket Umroh">
+                    <option value={28500000}>Umroh Ekonomis (Rp 28,5 Jt)</option>
+                    <option value={38500000}>Umroh Premium (Rp 38,5 Jt)</option>
+                    <option value={65000000}>Umroh Luxury (Rp 65 Jt)</option>
+                  </optgroup>
+                  <optgroup label="Paket Haji">
+                    <option value={65000000}>Haji Reguler Kemenag (Rp 65 Jt)</option>
+                    <option value={255000000}>Haji Khusus / Plus (Rp 255 Jt)</option>
+                    <option value={375000000}>Haji Furoda (Rp 375 Jt)</option>
+                  </optgroup>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-stone-500">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                </div>
               </div>
             </div>
 
