@@ -39,13 +39,13 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="#kalkulator">
+              <Link href="/kalkulator">
                 <span className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-[#064E3B] bg-[#D4AF37] hover:bg-yellow-500 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                   Mulai Rencanakan Tabungan
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </span>
               </Link>
-              <Link href="#produk">
+              <Link href="/produk">
                 <span className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 transition-all">
                   Lihat Paket Edukasi
                 </span>
@@ -290,28 +290,29 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Navigasi</h4>
+            <h4 className="text-white font-semibold mb-4">Perusahaan</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#produk" className="hover:text-emerald-400 transition-colors">Produk</Link></li>
-              <li><Link href="#kalkulator" className="hover:text-emerald-400 transition-colors">Kalkulator Pintar</Link></li>
-              <li><Link href="#edukasi" className="hover:text-emerald-400 transition-colors">Blog & Edukasi</Link></li>
-              <li><Link href="#mitra" className="hover:text-emerald-400 transition-colors">Mitra Bank</Link></li>
+              <li><Link href="/tentang-kami" className="hover:text-emerald-400 transition-colors">Tentang Kami</Link></li>
+              <li><Link href="/karir" className="hover:text-emerald-400 transition-colors">Karir</Link></li>
+              <li><Link href="/faq" className="hover:text-emerald-400 transition-colors">FAQ & Bantuan</Link></li>
+              <li><Link href="/kontak" className="hover:text-emerald-400 transition-colors">Hubungi Kami</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Hubungi Kami</h4>
+            <h4 className="text-white font-semibold mb-4">Navigasi</h4>
             <ul className="space-y-2 text-sm">
-              <li>cs@tabunganhajiumroh.com</li>
-              <li>0800-1234-5678</li>
-              <li>Gedung Pusat Bisnis Syariah,<br/>Jakarta, Indonesia</li>
+              <li><Link href="/produk" className="hover:text-emerald-400 transition-colors">Produk</Link></li>
+              <li><Link href="/kalkulator" className="hover:text-emerald-400 transition-colors">Kalkulator Pintar</Link></li>
+              <li><Link href="/edukasi" className="hover:text-emerald-400 transition-colors">Blog & Edukasi</Link></li>
+              <li><Link href="/mitra" className="hover:text-emerald-400 transition-colors">Mitra Bank</Link></li>
             </ul>
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center">
           <p>&copy; 2026 TabunganHajiUmroh.com. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-white">Syarat & Ketentuan</Link>
-            <Link href="#" className="hover:text-white">Kebijakan Privasi</Link>
+            <Link href="/syarat-ketentuan" className="hover:text-white">Syarat & Ketentuan</Link>
+            <Link href="/kebijakan-privasi" className="hover:text-white">Kebijakan Privasi</Link>
           </div>
         </div>
       </footer>
