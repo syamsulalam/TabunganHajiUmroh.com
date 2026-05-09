@@ -10,36 +10,42 @@ export default function Page() {
       category: 'Panduan',
       image: 'https://picsum.photos/seed/hajj1/600/400',
       type: 'article',
+      href: '/edukasi/cek-antrian-haji',
     },
     {
       title: '5 Tips Mengatur Keuangan untuk Pasangan Muda',
       category: 'Finansial',
       image: 'https://picsum.photos/seed/hajj2/600/400',
       type: 'article',
+      href: '/edukasi/tips-keuangan',
     },
     {
       title: 'Perbedaan Haji Reguler, Plus, dan Furoda. Mana yang Tepat?',
       category: 'Edukasi',
       image: 'https://picsum.photos/seed/hajj3/600/400',
       type: 'video',
+      href: '/edukasi/perbedaan-haji',
     },
     {
       title: 'Mengenal Istilah-Istilah Manasik Haji',
       category: 'Ibadah',
       image: 'https://picsum.photos/seed/hajj4/600/400',
       type: 'article',
+      href: '/edukasi/cek-antrian-haji',
     },
     {
       title: 'Bagaimana Pengelolaan Dana Haji di Investasikan oleh BPKH?',
       category: 'Finansial',
       image: 'https://picsum.photos/seed/hajj5/600/400',
       type: 'article',
+      href: '/edukasi/tips-keuangan',
     },
     {
       title: 'Persiapan Mental & Spiritual Ke Tanah Suci',
       category: 'Edukasi',
       image: 'https://picsum.photos/seed/hajj6/600/400',
       type: 'video',
+      href: '/edukasi/perbedaan-haji',
     }
   ];
 
@@ -68,7 +74,7 @@ export default function Page() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, i) => (
-            <div key={i} className="group rounded-2xl border border-stone-200 overflow-hidden hover:shadow-xl transition-all cursor-pointer bg-white flex flex-col">
+            <Link href={post.href} key={i} className="group rounded-2xl border border-stone-200 overflow-hidden hover:shadow-xl transition-all cursor-pointer bg-white flex flex-col">
               <div className="h-56 w-full relative overflow-hidden bg-stone-100">
                 <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
                 {post.type === 'video' && (
@@ -88,7 +94,7 @@ export default function Page() {
                   {post.type === 'video' ? 'Tonton Video' : 'Baca Artikel'} <ChevronRight className="w-4 h-4 ml-1" />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </main>

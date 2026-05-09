@@ -243,20 +243,23 @@ export default function Home() {
               {
                 title: 'Cara Mengecek Antrian Haji via Aplikasi Kemenag',
                 category: 'Panduan',
-                image: 'https://picsum.photos/seed/hajj1/600/400'
+                image: 'https://picsum.photos/seed/hajj1/600/400',
+                href: '/edukasi/cek-antrian-haji'
               },
               {
                 title: '5 Tips Mengatur Keuangan untuk Pasangan Muda',
                 category: 'Finansial',
-                image: 'https://picsum.photos/seed/hajj2/600/400'
+                image: 'https://picsum.photos/seed/hajj2/600/400',
+                href: '/edukasi/tips-keuangan'
               },
               {
                 title: 'Perbedaan Haji Reguler, Plus, dan Furoda',
                 category: 'Edukasi',
-                image: 'https://picsum.photos/seed/hajj3/600/400'
+                image: 'https://picsum.photos/seed/hajj3/600/400',
+                href: '/edukasi/perbedaan-haji'
               }
             ].map((post, i) => (
-              <div key={i} className="group rounded-2xl border border-stone-200 overflow-hidden hover:shadow-xl transition-all cursor-pointer bg-white">
+              <Link href={post.href} key={i} className="group rounded-2xl border border-stone-200 overflow-hidden hover:shadow-xl transition-all cursor-pointer bg-white block">
                 <div className="h-48 w-full relative overflow-hidden bg-stone-100">
                   <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
                 </div>
@@ -267,7 +270,7 @@ export default function Home() {
                     Baca Selengkapnya <ChevronRight className="w-4 h-4 ml-1" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

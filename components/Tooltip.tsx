@@ -1,6 +1,8 @@
 'use client';
-import { useState } from 'react';
+import React from 'react';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 
 interface TooltipProps {
   content: string;
@@ -8,31 +10,39 @@ interface TooltipProps {
 }
 
 export function Tooltip({ content, children }: TooltipProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div 
-      className="relative inline-flex items-center justify-center cursor-help"
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(false)}
-      onFocus={() => setIsVisible(true)}
-      onBlur={() => setIsVisible(false)}
-    >
-      {children}
-      <AnimatePresence>
-        {isVisible && (
-          <motion.div
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 2 }}
-            transition={{ duration: 0.2 }}
-            className="absolute bottom-full mb-2 px-3 py-2 bg-slate-900 text-white text-xs font-medium rounded-lg whitespace-nowrap z-50 pointer-events-none shadow-xl"
-          >
-            {content}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900"></div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <TooltipPrimitive.Provider delayDuration={100}>
+      <TooltipPrimitive.Root open={open} onOpenChange={setOpen}>
+        <TooltipPrimitive.Trigger asChild>
+          <span className="inline-flex cursor-help items-center justify-center">
+            {children}
+          </span>
+        </TooltipPrimitive.Trigger>
+        <AnimatePresence>
+          {open && (
+            <TooltipPrimitive.Portal forceMount>
+              <TooltipPrimitive.Content
+                asChild
+                sideOffset={12}
+                className="z-[9999]"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 2 }}
+                  transition={{ duration: 0.15 }}
+                  className="px-3 py-2 bg-slate-900 text-white text-xs font-medium rounded-lg shadow-xl relative"
+                >
+                  {content}
+                  <TooltipPrimitive.Arrow className="fill-slate-900" width={11} height={5} />
+                </motion.div>
+              </TooltipPrimitive.Content>
+            </TooltipPrimitive.Portal>
+          )}
+        </AnimatePresence>
+      </TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   );
 }
