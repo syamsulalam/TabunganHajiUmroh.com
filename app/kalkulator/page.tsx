@@ -9,9 +9,20 @@ import { Tooltip } from '@/components/Tooltip';
 
 export default function Page() {
   const [targetYears, setTargetYears] = useState(5);
-  const [estimatedCost, setEstimatedCost] = useState(45000000);
+  const [selectedPackageId, setSelectedPackageId] = useState('haji-reguler');
   const [inflationRate, setInflationRate] = useState(3); // 3%
   const [initialDeposit, setInitialDeposit] = useState(1000000);
+
+  const packages = [
+    { id: 'umroh-ekonomis', price: 28500000 },
+    { id: 'umroh-premium', price: 38500000 },
+    { id: 'umroh-luxury', price: 65000000 },
+    { id: 'haji-reguler', price: 65000000 },
+    { id: 'haji-khusus', price: 255000000 },
+    { id: 'haji-furoda', price: 375000000 },
+  ];
+
+  const estimatedCost = packages.find(p => p.id === selectedPackageId)?.price || 65000000;
 
   // Future Value calculation: FV = PV * (1 + r)^n
   const futureCost = estimatedCost * Math.pow(1 + (inflationRate / 100), targetYears);
@@ -69,19 +80,19 @@ export default function Page() {
               
               <div className="relative mb-6">
                 <select 
-                  value={estimatedCost} 
-                  onChange={(e) => setEstimatedCost(Number(e.target.value))}
+                  value={selectedPackageId} 
+                  onChange={(e) => setSelectedPackageId(e.target.value)}
                   className="w-full appearance-none bg-white border border-stone-200 text-slate-900 rounded-xl px-4 py-4 pr-10 hover:border-[#064E3B] focus:outline-none focus:ring-2 focus:ring-[#064E3B]/20 font-semibold"
                 >
                   <optgroup label="Paket Umroh">
-                    <option value={28500000}>Umroh Ekonomis (Rp 28,5 Jt)</option>
-                    <option value={38500000}>Umroh Premium (Rp 38,5 Jt)</option>
-                    <option value={65000000}>Umroh Luxury (Rp 65 Jt)</option>
+                    <option value="umroh-ekonomis">Umroh Ekonomis (Rp 28,5 Jt)</option>
+                    <option value="umroh-premium">Umroh Premium (Rp 38,5 Jt)</option>
+                    <option value="umroh-luxury">Umroh Luxury (Rp 65 Jt)</option>
                   </optgroup>
                   <optgroup label="Paket Haji">
-                    <option value={65000000}>Haji Reguler Kemenag (Rp 65 Jt)</option>
-                    <option value={255000000}>Haji Khusus / Plus (Rp 255 Jt)</option>
-                    <option value={375000000}>Haji Furoda (Rp 375 Jt)</option>
+                    <option value="haji-reguler">Haji Reguler Kemenag (Rp 65 Jt)</option>
+                    <option value="haji-khusus">Haji Khusus / Plus (Rp 255 Jt)</option>
+                    <option value="haji-furoda">Haji Furoda (Rp 375 Jt)</option>
                   </optgroup>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-stone-500">
